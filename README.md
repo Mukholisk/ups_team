@@ -14,6 +14,8 @@
   - Front-end
 - 배승호(betweenmoon, initmumu)
   - Back-end
+- 고승완(Mukholisk)
+  - Back-end
 
 ## 사용 기술
 
