@@ -8,6 +8,7 @@ const setUpPassport = require("./passport/config_passport");
 
 const main = require("./router/main");
 const naver = require("./router/api/auth/naver");
+const comment = require("./router/api/comment/comment");
 
 const ups = require("./router/api/auth/ups");
 const feeds = require("./router/api/feed/feeds");
@@ -44,6 +45,7 @@ app.use("/api/auth/ups", ups);
 app.use("/", main);
 app.use("/api/register", register);
 app.use("/api/feeds", feeds);
+app.use("/api/comment", comment);
 
 app.listen(PORT, () => {
   console.log(`Server is on PORT Number ${PORT}`);

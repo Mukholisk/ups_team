@@ -1,24 +1,21 @@
 const db = require("mongoose");
 
-const commentSchema = db.Schema({
-    _id: {
-        type: ObjectId,
-        
-    },
+const commentSchema = db.Schema(
+  {
     feed_id: {
-        type: ObjectId,
-        
+      type: String,
     },
     user_id: {
-        type: ObjectId,
-        
+      type: String,
     },
-    body:{
-        type: String,
-        maxlength: 144
-    }
-});
+    body: {
+      type: String,
+      maxlength: 144,
+    },
+  },
+  { versionKey: false }
+);
 
-const Comments = db.model('Comments', commentSchema);
+const Comments = db.model("Comments", commentSchema);
 
 module.exports = Comments;
