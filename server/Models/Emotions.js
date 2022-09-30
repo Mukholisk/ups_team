@@ -2,11 +2,11 @@ const db = require("mongoose");
 
 const emotionSchema = db.Schema({
     _id: {
-        type: ObjectId,
+        type: String,
         
     },
     feed_id: {
-        type: ObjectId,
+        type: String,
         
     },
     kinds: {
