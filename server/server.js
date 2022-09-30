@@ -8,8 +8,11 @@ const setUpPassport = require("./passport/config_passport");
 
 const main = require("./router/main");
 const naver = require("./router/api/auth/naver");
+
 const ups = require("./router/api/auth/ups");
+const feeds = require("./router/api/feeds");
 const register = require("./router/api/register/register");
+
 const app = express();
 const PORT = 1128;
 
@@ -40,6 +43,7 @@ app.use("/api/auth/naver", naver);
 app.use("/api/auth/ups", ups);
 app.use("/", main);
 app.use("/api/register", register);
+app.use("/api/feeds", feeds);
 
 app.listen(PORT, () => {
   console.log(`Server is on PORT Number ${PORT}`);
