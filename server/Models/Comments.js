@@ -2,15 +2,15 @@ const db = require("mongoose");
 
 const userSchema = db.Schema({
     _id: {
-        type: String,
+        type: ObjectId,
         
     },
     feed_id: {
-        type: String,
+        type: ObjectId,
         
     },
     user_id: {
-        type: String,
+        type: ObjectId,
         
     },
     body:{
