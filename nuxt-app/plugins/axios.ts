@@ -6,7 +6,8 @@ export let axios: AxiosInstance
 
 export default defineNuxtPlugin((nuxtApp) => {
     const axiosInstance = Axios.create({
-        baseURL: ""
+        baseURL: "http://localhost:1128",
+        withCredentials: false
     })
 
 

@@ -1,18 +1,8 @@
 <template>
-    <div>
-      <template>
-        hello
-        <h1>
-          Hello world!
-        </h1>
-      </template>
-    </div>
+  <kakao-map class="h-full"/>
 </template>
 
 <script setup lang="ts">
-
+import KakaoMap from "~/components/kakaoMap.vue";
 </script>
 
-<style scoped>
-
-</style>
