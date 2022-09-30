@@ -40,17 +40,18 @@ router.get("/:feed_id", (req, res) => {
 });
 
 router.post("/", (req, res) => {
-  const ID = req.session.passport.user.account_id;
-  
+  const ID = 'a'//req.session.passport.user.account_id;
   const x = req.param("x");
   const y = req.param("y");
 
+  const data = req.body;
   let query = Feeds.visits.update(
     { user_id: ID },
     {
-      $set: {
-        location: { x: x, y: y },
-      },
+      title: data.title,
+      body: data.body,
+      image_url: data.image_url,
+      location: { x: x, y: y }
     }
   );
 });
