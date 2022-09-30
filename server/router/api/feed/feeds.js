@@ -3,10 +3,10 @@ const Feeds = require("../../../Models/Feeds");
 const Emoticons = require("../../../Models/Emotions");
 
 router.get("/", (req, res) => {
-  let min_x = parseFloat(req.params["x"]) - 0.002;
-  let max_x = parseFloat(req.params["x"]) + 0.002;
-  let min_y = parseFloat(req.params["y"]) - 0.0025;
-  let max_y = parseFloat(req.params["y"]) + 0.0025;
+  let min_x = parseFloat(req.query.x) - 0.002;
+  let max_x = parseFloat(req.query.x) + 0.002;
+  let min_y = parseFloat(req.query.y) - 0.0025;
+  let max_y = parseFloat(req.query.y) + 0.0025;
 
   Feeds.find(
     {
@@ -27,24 +27,28 @@ router.get("/", (req, res) => {
 });
 
 router.get("/:feed_id", (req, res) => {
-  const feed_id = req.params.feed_id;
-
-  Feeds.find({user_id: feed_id}, (err, feed)=>{
-    if(err)
-      return res.status(404).json({
-        success: false,
-        err,
-      });
-    return res.status(200).send(feed);
-  });
+  Feeds.findOne(
+    {
+      _id: req.params.feed_id,
+    },
+    (err, feed) => {
+      if (err)
+        return res.status(404).json({
+          success: false,
+          err,
+        });
+      return res.status(200).send(feeds_loc);
+    }
+  );
 });
 
 router.post("/", (req, res) => {
   const ID = req.session.passport.user.account_id;
-  const x = req.param("x");
-  const y = req.param("y");
-
+  const x = req.query.x;
+  const y = req.query.y;
+  
   const data = req.body;
+
   let query = Feeds.visits.update(
     { user_id: ID },
     {
