@@ -43,8 +43,7 @@ router.get("/:feed_id", (req, res) => {
 });
 
 router.post("/", (req, res) => {
-<<<<<<< HEAD
-  const ID = 'aaa'//req.session.passport.user.account_id;
+  const ID = req.session.passport.user.account_id;
   const x = req.param("x");
   const y = req.param("y");
 
@@ -55,17 +54,6 @@ router.post("/", (req, res) => {
       body: data.body,
       image_url: data.image_url,
       location: { x: x, y: y }
-=======
-  const ID = req.session.passport.user.account_id;
-  const x = req.query.x;
-  const y = req.query.y;
-  let query = Feeds.visits.update(
-    { user_id: ID },
-    {
-      $set: {
-        location: { x: x, y: y },
-      },
->>>>>>> 9945187 (api user get)
     }
   );
   
