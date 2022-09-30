@@ -1,6 +1,6 @@
 const db = require("mongoose");
 
-const commentSchema = db.Schema(
+const upcSchema = db.Schema(
   {
     feed_id: {
       type: String,
@@ -17,6 +17,6 @@ const commentSchema = db.Schema(
   { versionKey: false }
 );
 
-const Comments = db.model("Comments", commentSchema);
+const Upc = db.model("Upc", upcSchema);
 
-module.exports = Comments;
+module.exports = Upc;
