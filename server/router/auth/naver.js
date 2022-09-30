@@ -3,7 +3,6 @@ const Naverloginapi = require('../../conn/naver_login') // Naver Login API Confi
 const passport = require('passport'); // Passport
 const NaverStrategy = require('passport-naver').Strategy // Passport Naver 전략
 
-
 router.get('/',passport.authenticate('naver',null),function(req, res) {
     console.log("/main/naver");
 });
@@ -12,8 +11,7 @@ router.get('/callback', passport.authenticate('naver', {
     successRedirect: '/',
     failureRedirect: '/silpae'
   })
- );
-
+);
 
 passport.use(new NaverStrategy({
     clientID: Naverloginapi.client_id,
@@ -29,7 +27,7 @@ function(accessToken, refreshToken, profile, done) {
             provider: 'naver',
             naver: profile._json
         };
-        console.log("user=");
+        process.stdout.write("user=");
         console.log(user);
         return done(null, user);
     });
