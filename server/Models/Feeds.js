@@ -1,12 +1,8 @@
 const db = require("mongoose");
 
 const feedSchema = db.Schema({
-    _id: {
-        type: ObjectId,
-        
-    },
     user_id: {
-        type: ObjectId,
+        type: String,
         
     },
     title: {
