@@ -31,7 +31,7 @@ router.get("/:feed_id", (req, res) => {
     {
       _id: req.params.feed_id,
     },
-    (err, feed) => {
+    (err, feeds_loc) => {
       if (err)
         return res.status(404).json({
           success: false,
@@ -49,16 +49,15 @@ router.post("/", (req, res) => {
 
   const data = req.body;
   let query = Feeds.insertMany({
-      user_id: ID,
-      title: data.title,
-      body: data.body,
-      image_url: data.image_url,
-      location: { x: x, y: y }
-    }
-  );
-  
+    user_id: ID,
+    title: data.title,
+    body: data.body,
+    image_url: data.image_url,
+    location: { x: x, y: y },
+  });
+
   req.body["user_id"] = ID;
-  req.body["location"] = {x: x, y: y};
+  req.body["location"] = { x: x, y: y };
   return res.status(200).send(req.body);
 });
 
