@@ -13,6 +13,7 @@ const comment = require("./router/api/comment/comment");
 const ups = require("./router/api/auth/ups");
 const feeds = require("./router/api/feed/feeds");
 const register = require("./router/api/register/register");
+const user = require("./router/api/user/user");
 
 const app = express();
 const PORT = 1128;
@@ -46,6 +47,7 @@ app.use("/", main);
 app.use("/api/register", register);
 app.use("/api/feeds", feeds);
 app.use("/api/comment", comment);
+app.use("/api/user", user);
 
 app.listen(PORT, () => {
   console.log(`Server is on PORT Number ${PORT}`);
