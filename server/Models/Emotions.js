@@ -1,6 +1,6 @@
 const db = require("mongoose");
 
-const userSchema = db.Schema({
+const emotionSchema = db.Schema({
     _id: {
         type: ObjectId,
         
@@ -15,6 +15,6 @@ const userSchema = db.Schema({
     },
 });
 
-const Emotions = db.model('Emotions', userSchema);
+const Emotions = db.model('Emotions', emotionSchema);
 
 module.exports = Emotions;

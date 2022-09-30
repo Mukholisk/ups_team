@@ -1,6 +1,6 @@
 const db = require("mongoose");
 
-const userSchema = db.Schema({
+const commentSchema = db.Schema({
     _id: {
         type: ObjectId,
         
@@ -19,6 +19,6 @@ const userSchema = db.Schema({
     }
 });
 
-const Comments = db.model('Comments', userSchema);
+const Comments = db.model('Comments', commentSchema);
 
 module.exports = Comments;
