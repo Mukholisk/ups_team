@@ -103,8 +103,6 @@ router.post("/:feed_id/", (req, res) => {
     }
     return res.status(200).send(feed);
   });
-  
-  
 });
 
 module.exports = router;
