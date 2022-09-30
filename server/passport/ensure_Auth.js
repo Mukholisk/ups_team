@@ -1,10 +1,10 @@
 let ensureAuthenticated = (req, res, next) => {
     if (req.isAuthenticated()){
-        next()
+        next();
     }
     else{
-        res.redirect("/silpae")
+        res.redirect("/silpae");
     }
-}
+};
 
-module.exports = ensureAuthenticated
+module.exports = ensureAuthenticated;
