@@ -43,26 +43,24 @@ router.get("/:feed_id", (req, res) => {
 });
 
 router.post("/", (req, res) => {
-  router.post("/", (req, res) => {
-    const ID = req.session.passport.user.account_id;
-    const x = req.param("x");
-    const y = req.param("y");
+  const ID = req.session.passport.user.account_id;
+  const x = req.param("x");
+  const y = req.param("y");
+
+  const data = req.body;
+  let query = Feeds.visits.update(
+    { user_id: ID },
+    {
+      title: data.title,
+      body: data.body,
+      image_url: data.image_url,
+      location: { x: x, y: y }
+    }
+  );
   
-    const data = req.body;
-    let query = Feeds.visits.update(
-      { user_id: ID },
-      {
-        title: data.title,
-        body: data.body,
-        image_url: data.image_url,
-        location: { x: x, y: y }
-      }
-    );
-    
-    req.body["user_id"] = ID;
-    req.body["location"] = {x: x, y: y};
-    return res.status(200).send(req.body);
-  });
+  req.body["user_id"] = ID;
+  req.body["location"] = {x: x, y: y};
+  return res.status(200).send(req.body);
 });
 
 router.post("/:feed_id/", (req, res) => {
