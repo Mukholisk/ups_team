@@ -43,6 +43,7 @@ router.get("/:feed_id", (req, res) => {
 });
 
 router.post("/", (req, res) => {
+<<<<<<< HEAD
   const ID = 'aaa'//req.session.passport.user.account_id;
   const x = req.param("x");
   const y = req.param("y");
@@ -54,6 +55,17 @@ router.post("/", (req, res) => {
       body: data.body,
       image_url: data.image_url,
       location: { x: x, y: y }
+=======
+  const ID = req.session.passport.user.account_id;
+  const x = req.query.x;
+  const y = req.query.y;
+  let query = Feeds.visits.update(
+    { user_id: ID },
+    {
+      $set: {
+        location: { x: x, y: y },
+      },
+>>>>>>> 9945187 (api user get)
     }
   );
   
@@ -69,7 +81,7 @@ router.post("/:feed_id/", (req, res) => {
   const feed_id = req.params.feed_id;
   const ID = req.session.passport.user.account_id;
   const emoticon = req.param("emoticon");
-  
+
   /*
   1. Emoticon에서 feed_id를 통해 검색
   2. kinds의 리스트에서 해당 감정표현을 했는지 찾음
@@ -79,32 +91,33 @@ router.post("/:feed_id/", (req, res) => {
       2-2-2: 다른 리스트인 경우, 기존 리스트에서 제거하고 새 리스트에 저장
   */
   // 1
-  Emoticons.find({feed_id: feed_id}, (err, feed)=>{
-    if(err)
+  Emoticons.find({ feed_id: feed_id }, (err, feed) => {
+    if (err)
       return res.status(404).json({
         success: false,
         err,
       });
     // 2
-    let name = '';
+    let name = "";
     let kinds = feed.kinds;
 
-    for(let key in kinds){
-      if(kinds[key].includes(ID)){
+    for (let key in kinds) {
+      if (kinds[key].includes(ID)) {
         name = key;
         break;
       }
     }
 
-    if(name == ''){ // 2-1
+    if (name == "") {
+      // 2-1
       kinds[emoticon].push(ID);
-    }
-    else{ // 2-2
+    } else {
+      // 2-2
       // 2-2-1
       const idx = kinds[name].indexOf(ID);
       kinds[name].splice(idx, 1);
       // 2-2-2
-      if(name != emoticon){
+      if (name != emoticon) {
         kinds[emoticon].push(ID);
       }
     }
