@@ -1,5 +1,5 @@
 const router = require("express").Router(); // express router
-const Naverloginapi = require("../../conn/naver_login"); // Naver Login API Config
+const Naverloginapi = require("../../../conn/naver_login"); // Naver Login API Config
 const passport = require("passport"); // Passport
 const NaverStrategy = require("passport-naver").Strategy; // Passport Naver 전략
 
@@ -31,7 +31,7 @@ passport.use(
           provider: "naver",
           naver: profile._json,
         };
-        process.stdout.write("user=");
+        console.log("user=");
         console.log(user);
         return done(null, user);
       });
