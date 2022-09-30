@@ -1,6 +1,7 @@
 const router = require("express").Router();
 const Feeds = require("../../../Models/Feeds");
 const Emoticons = require("../../../Models/Emotions");
+const Emotions = require("../../../Models/Emotions");
 
 router.get("/", (req, res) => {
   let min_x = parseFloat(req.query.x) - 0.002;
@@ -108,6 +109,8 @@ router.post("/:feed_id/", (req, res) => {
         kinds[emoticon].push(ID);
       }
     }
+
+    Emotions.updateOne({feed_id: feed_id}, {kinds: kinds});
     return res.status(200).send(feed);
   });
 });
