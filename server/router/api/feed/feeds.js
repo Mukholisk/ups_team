@@ -40,7 +40,7 @@ router.get("/:feed_id", (req, res) => {
 });
 
 router.post("/", (req, res) => {
-  const ID = 'a'//req.session.passport.user.account_id;
+  const ID = req.session.passport.user.account_id;
   const x = req.param("x");
   const y = req.param("y");
 
