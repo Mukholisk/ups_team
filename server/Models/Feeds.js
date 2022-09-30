@@ -1,7 +1,6 @@
 const db = require("mongoose");
 
-<<<<<<< HEAD
-const userSchema = db.Schema({
+const feedSchema = db.Schema({
     _id: {
         type: ObjectId,
         
@@ -28,9 +27,6 @@ const userSchema = db.Schema({
     }
 });
 
-const Feeds = db.model('Feeds', userSchema);
+const Feeds = db.model('Feeds', feedSchema);
 
 module.exports = Feeds;
-=======
-const feedSchema = db.Schema({});
->>>>>>> 4263544 (merge)
