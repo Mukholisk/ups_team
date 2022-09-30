@@ -43,14 +43,13 @@ router.get("/:feed_id", (req, res) => {
 });
 
 router.post("/", (req, res) => {
-  const ID = req.session.passport.user.account_id;
+  const ID = 'aaa'//req.session.passport.user.account_id;
   const x = req.param("x");
   const y = req.param("y");
 
   const data = req.body;
-  let query = Feeds.visits.update(
-    { user_id: ID },
-    {
+  let query = Feeds.insertMany({
+      user_id: ID,
       title: data.title,
       body: data.body,
       image_url: data.image_url,
