@@ -27,18 +27,6 @@ router.get("/", (req, res) => {
 });
 
 router.get("/:feed_id", (req, res) => {
-<<<<<<< HEAD
-  const feed_id = req.params.feed_id;
-
-  Feeds.find({user_id: feed_id}, (err, feed)=>{
-    if(err)
-      return res.status(404).json({
-        success: false,
-        err,
-      });
-    return res.status(200).send(feed);
-  });
-=======
   Feeds.findOne(
     {
       _id: req.params.feed_id,
@@ -52,26 +40,22 @@ router.get("/:feed_id", (req, res) => {
       return res.status(200).send(feeds_loc);
     }
   );
->>>>>>> 77e0782 (hmm)
 });
 
 router.post("/", (req, res) => {
   const ID = req.session.passport.user.account_id;
-<<<<<<< HEAD
-  
-  const x = req.param("x");
-  const y = req.param("y");
-
-=======
   const x = req.query.x;
   const y = req.query.y;
->>>>>>> 77e0782 (hmm)
+  
+  const data = req.body;
+
   let query = Feeds.visits.update(
     { user_id: ID },
     {
-      $set: {
-        location: { x: x, y: y },
-      },
+      title: data.title,
+      body: data.body,
+      image_url: data.image_url,
+      location: { x: x, y: y }
     }
   );
 });
