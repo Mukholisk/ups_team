@@ -26,9 +26,16 @@ router.get("/", (req, res) => {
 });
 
 router.get("/:feed_id", (req, res) => {
-  const info = req.params.feed_id;
-  // DB에서 정보 불러오기?
-  res.send(info + "번 마커찔렀을때");
+  const feed_id = req.params.feed_id;
+
+  Feeds.find({user_id: feed_id}, (err, feed)=>{
+    if(err)
+      return res.status(404).json({
+        success: false,
+        err,
+      });
+    return res.status(200).send(feed);
+  });
 });
 
 router.post("/", (req, res) => {
@@ -45,6 +52,8 @@ router.post("/", (req, res) => {
   );
 });
 
-router.post("/:feed_id/emotions", (req, res) => {});
+router.post("/:feed_id", (req, res) => {
+
+});
 
 module.exports = router;
